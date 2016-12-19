@@ -14,9 +14,9 @@ public class BasicTaskResult implements TaskResult<String> {
 	private Boolean isError;
 	
 	public BasicTaskResult(String result) {
-		this.result = result;
-		this.isError = false;
+		this(result, false);
 	}
+	
 	public BasicTaskResult(String result, Boolean isError) {
 		this.result = result;
 		this.isError = isError;

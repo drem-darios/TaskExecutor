@@ -55,10 +55,10 @@ public class ExecutorTest {
 	@Test
 	public void testExecuteTaskFailure() {
 		Task task = new BasicTask(mockStrategy); // Change this to be an mock object
-		String expected = "failure";
+		TaskExecutionException expected = new TaskExecutionException("failure");
 		
 		try {
-			when(mockStrategy.execute()).thenThrow(new TaskExecutionException(expected));
+			when(mockStrategy.execute()).thenThrow(expected);
 		} catch (TaskExecutionException e) {
 			fail(e.getMessage());
 		}
@@ -72,7 +72,7 @@ public class ExecutorTest {
 			e.printStackTrace();
 		} // Give two seconds for execution to complete
 		
-		TaskResult<String> result = executor.getTaskResult(task.getId()); // Check the execution result
+		TaskResult<Exception> result = executor.getTaskResult(task.getId()); // Check the execution result
 		Assert.assertEquals(expected, result.getResult());
 		Assert.assertTrue(result.isError());
 	}
