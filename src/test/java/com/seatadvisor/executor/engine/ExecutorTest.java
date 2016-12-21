@@ -14,6 +14,7 @@ import com.seatadvisor.executor.api.Task;
 import com.seatadvisor.executor.api.TaskResult;
 import com.seatadvisor.executor.exceptions.TaskExecutionException;
 import com.seatadvisor.executor.models.BasicTask;
+import com.seatadvisor.executor.models.BasicTaskResult;
 
 public class ExecutorTest {
 
@@ -33,22 +34,22 @@ public class ExecutorTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testExecuteTaskSuccess() {
-		Task task = new BasicTask(mockStrategy); // Change this to be an mock object
-		String expected = "success";
+		Task task = new BasicTask(mockStrategy); // Use mock object for strategy
+		TaskResult<String> expected = new BasicTaskResult("success");
 		try {
-			when(mockStrategy.execute()).thenReturn(expected);
+			when(mockStrategy.execute()).thenReturn(expected); // Set expected on mock object
 		} catch (TaskExecutionException e) {
 			fail(e.getMessage());
 		}
 		executor.addTask(task);
-		executor.executeTask(task.getId());
+		executor.executeTask(task.getId()); // Execute the task
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} // Give two seconds for execution to complete
-		TaskResult<String> result = executor.getTaskResult(task.getId()); // Check the execution result
-		Assert.assertEquals(expected, result.getResult());
+		} // Wait two seconds for execution thread to come back with a result
+		TaskResult<String> result = executor.getTaskResult(task.getId()); 
+		Assert.assertEquals(expected, result); // Check the execution result
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -81,7 +82,7 @@ public class ExecutorTest {
 	public void testExecuteTaskIsComplete() {
 		Task task = new BasicTask(mockStrategy); // Change this to be an mock object
 		try {
-			when(mockStrategy.execute()).thenReturn("success");
+			when(mockStrategy.execute()).thenReturn(new BasicTaskResult("success"));
 		} catch (TaskExecutionException e) {
 			fail(e.getMessage());
 		}

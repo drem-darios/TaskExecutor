@@ -1,13 +1,19 @@
 package com.seatadvisor.executor.engine;
 
 import com.seatadvisor.executor.api.ExecutionStrategy;
-import com.seatadvisor.executor.api.Task;
 import com.seatadvisor.executor.api.TaskResult;
 import com.seatadvisor.executor.exceptions.TaskExecutionException;
-import com.seatadvisor.executor.models.BasicTaskResult;
+import com.seatadvisor.executor.models.TaskExceptionResult;
 
+/**
+ * A unit of execution of a <code>Task</code>. A task is executed based on its
+ * <code>ExecutionStrategy</code>. The <code>TaskState</code> is used to maintain the state
+ * of the task execution. A task starts at the READY state. While execution is in progress the execution
+ * state will be RUNNING. Once completed, the execution state will either be in the COMPLETE state or the ERROR state.  
+ *
+ */
 public class TaskExecution {
-	private Object result;
+	private TaskResult result;
 	private TaskState state;
 	private ExecutionStrategy executionStrategy;
 
@@ -16,7 +22,7 @@ public class TaskExecution {
 		this.state = TaskState.READY;
 	}
 
-	public void executeTask() throws TaskExecutionException {
+	public void executeTask() {
 		if (state == TaskState.READY) {
 			state = TaskState.RUNNING;
 		} else {
@@ -27,10 +33,9 @@ public class TaskExecution {
 		try {
 			result = executionStrategy.execute();
 			state = TaskState.COMPLETE;
-
 		} catch(TaskExecutionException e) {
+			result = new TaskExceptionResult(e); // if there was an error, set the result to be an exception result
 			state = TaskState.ERROR;
-			throw e;
 		}
 	}
 
@@ -46,7 +51,7 @@ public class TaskExecution {
 		return state == TaskState.ERROR;
 	}
 
-	public Object getResult() {
+	public TaskResult getResult() {
 		return result;
 	}
 }

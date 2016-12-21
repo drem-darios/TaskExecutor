@@ -1,59 +1,40 @@
 package com.seatadvisor.executor.strategy;
 
-import static org.junit.Assert.fail;
-import static org.mockito.Mockito.when;
+import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import com.seatadvisor.executor.api.ExecutionStrategy;
 import com.seatadvisor.executor.api.Task;
 import com.seatadvisor.executor.api.TaskResult;
 import com.seatadvisor.executor.engine.Executor;
-import com.seatadvisor.executor.exceptions.TaskExecutionException;
 import com.seatadvisor.executor.models.BasicTask;
 
 public class TimedExecutionStrategyTest {
 
 	private Executor executor;
-	private ExecutionStrategy mockStrategy;
+	private ExecutionStrategy strategy;
 	
 	@Before
 	public void setUp() throws Exception {
 		this.executor = new Executor();
-		mockStrategy = Mockito.mock(ExecutionStrategy.class);
+		this.strategy = new BasicTimedExecutionStrategy();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testAddTask() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTask() {
-		fail("Not yet implemented");
-	}
-	
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testExecuteTask() {
-		Task task = new BasicTask(mockStrategy); // Change this to be an mock object
-		try {
-			when(mockStrategy.execute()).thenReturn("success");
-		} catch (TaskExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void testExecuteTaskWithDefaultTime() {
+		Task task = new BasicTask(strategy);
 		executor.addTask(task);
 		executor.executeTask(task.getId());
-		String expected = "success";
+		String expected = "Timed Task Executed Successfully!";
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -63,9 +44,31 @@ public class TimedExecutionStrategyTest {
 		Assert.assertEquals(expected, result.getResult());
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
-	public void testExecuteTasks() {
-		fail("Not yet implemented");
+	public void testExecuteTaskWithFiveSecondTime() {
+		Properties props = new Properties();
+		props.setProperty("sleep", "5000"); // Have execution wait 5 seconds before starting
+		strategy.setProperties(props);
+		Task task = new BasicTask(strategy);
+		executor.addTask(task);
+		executor.executeTask(task.getId());
+		String expected = "Timed Task Executed Successfully!";
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} // Give three seconds before checking
+		TaskResult<String> result = executor.getTaskResult(task.getId()); // Get the execution result
+		Assert.assertNull(result); // Result was timed at 5 seconds...should be null since result is not ready
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} // Give three seconds before checking
+		result = executor.getTaskResult(task.getId()); 
+		Assert.assertEquals(expected, result.getResult()); // Check the execution result
 	}
 
 }

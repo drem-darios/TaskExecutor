@@ -13,6 +13,9 @@ public class TaskExceptionResult implements TaskResult<Exception> {
 	private Exception result;
 	private Boolean isError;
 
+	/**
+	 * Creates a new TaskExceptionResult and sets isError to true by default
+	 */
 	public TaskExceptionResult(Exception exception) {
 		this.result = exception;
 		this.isError = true;
