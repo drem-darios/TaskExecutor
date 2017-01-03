@@ -1,4 +1,4 @@
-package com.seatadvisor.executor.api;
+package com.ticketsrus.executor.api;
 
 /**
  * The result of a task being executed. This is templated to support different types of

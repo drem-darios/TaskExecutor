@@ -1,11 +1,11 @@
-package com.seatadvisor.executor.strategy;
+package com.ticketsrus.executor.strategy;
 
 import java.util.Properties;
 
-import com.seatadvisor.executor.api.ExecutionStrategy;
-import com.seatadvisor.executor.api.TaskResult;
-import com.seatadvisor.executor.exceptions.TaskExecutionException;
-import com.seatadvisor.executor.models.BasicTaskResult;
+import com.ticketsrus.executor.api.ExecutionStrategy;
+import com.ticketsrus.executor.api.TaskResult;
+import com.ticketsrus.executor.exceptions.TaskExecutionException;
+import com.ticketsrus.executor.models.BasicTaskResult;
 
 /**
  * A very basic <code>ExecutionStrategy</code> that just returns a <code>TaskResult</code> to let the caller

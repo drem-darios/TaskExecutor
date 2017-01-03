@@ -1,8 +1,8 @@
-package com.seatadvisor.executor.api;
+package com.ticketsrus.executor.api;
 
 import java.util.Properties;
 
-import com.seatadvisor.executor.exceptions.TaskExecutionException;
+import com.ticketsrus.executor.exceptions.TaskExecutionException;
 
 /**
  * Strategy pattern used to define how a task should be executed. 

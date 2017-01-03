@@ -1,4 +1,4 @@
-package com.seatadvisor.executor.strategy;
+package com.ticketsrus.executor.strategy;
 
 import java.util.Properties;
 
@@ -7,11 +7,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.seatadvisor.executor.api.ExecutionStrategy;
-import com.seatadvisor.executor.api.Task;
-import com.seatadvisor.executor.api.TaskResult;
-import com.seatadvisor.executor.engine.Executor;
-import com.seatadvisor.executor.models.BasicTask;
+import com.ticketsrus.executor.api.ExecutionStrategy;
+import com.ticketsrus.executor.api.Task;
+import com.ticketsrus.executor.api.TaskResult;
+import com.ticketsrus.executor.models.BasicTask;
+import com.ticketsrus.executor.engine.Executor;
 
 public class TimedExecutionStrategyTest {
 

@@ -1,7 +1,7 @@
-package com.seatadvisor.executor.models;
+package com.ticketsrus.executor.models;
 
-import com.seatadvisor.executor.api.ExecutionStrategy;
-import com.seatadvisor.executor.impl.AbstractTask;
+import com.ticketsrus.executor.api.ExecutionStrategy;
+import com.ticketsrus.executor.impl.AbstractTask;
 
 /**
  * This is a basic task which is defined by its execution strategy.

@@ -1,4 +1,4 @@
-package com.seatadvisor.executor.exceptions;
+package com.ticketsrus.executor.exceptions;
 
 /**
  * This exception is used to signify something went wrong while <code>TaskExecution</code> was in progress

@@ -1,9 +1,9 @@
-package com.seatadvisor.executor.engine;
+package com.ticketsrus.executor.engine;
 
-import com.seatadvisor.executor.api.ExecutionStrategy;
-import com.seatadvisor.executor.api.TaskResult;
-import com.seatadvisor.executor.exceptions.TaskExecutionException;
-import com.seatadvisor.executor.models.TaskExceptionResult;
+import com.ticketsrus.executor.api.ExecutionStrategy;
+import com.ticketsrus.executor.api.TaskResult;
+import com.ticketsrus.executor.exceptions.TaskExecutionException;
+import com.ticketsrus.executor.models.TaskExceptionResult;
 
 /**
  * A unit of execution of a <code>Task</code>. A task is executed based on its

@@ -1,4 +1,4 @@
-package com.seatadvisor.executor.engine;
+package com.ticketsrus.executor.engine;
 
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
@@ -9,12 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.seatadvisor.executor.api.ExecutionStrategy;
-import com.seatadvisor.executor.api.Task;
-import com.seatadvisor.executor.api.TaskResult;
-import com.seatadvisor.executor.exceptions.TaskExecutionException;
-import com.seatadvisor.executor.models.BasicTask;
-import com.seatadvisor.executor.models.BasicTaskResult;
+import com.ticketsrus.executor.api.ExecutionStrategy;
+import com.ticketsrus.executor.api.Task;
+import com.ticketsrus.executor.api.TaskResult;
+import com.ticketsrus.executor.exceptions.TaskExecutionException;
+import com.ticketsrus.executor.models.BasicTask;
+import com.ticketsrus.executor.models.BasicTaskResult;
 
 public class ExecutorTest {
 

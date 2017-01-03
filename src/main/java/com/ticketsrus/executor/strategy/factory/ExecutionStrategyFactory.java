@@ -1,9 +1,9 @@
-package com.seatadvisor.executor.strategy.factory;
+package com.ticketsrus.executor.strategy.factory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.seatadvisor.executor.api.ExecutionStrategy;
+import com.ticketsrus.executor.api.ExecutionStrategy;
 
 /**
  * Factory pattern that allows callers to register a new <code>ExecutionStrategy</code> and returns an

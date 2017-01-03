@@ -1,9 +1,9 @@
-package com.seatadvisor.executor.impl;
+package com.ticketsrus.executor.impl;
 
 import java.util.UUID;
 
-import com.seatadvisor.executor.api.ExecutionStrategy;
-import com.seatadvisor.executor.api.Task;
+import com.ticketsrus.executor.api.ExecutionStrategy;
+import com.ticketsrus.executor.api.Task;
 
 /**
  * This is the base of a basic task which is defined by its execution strategy.

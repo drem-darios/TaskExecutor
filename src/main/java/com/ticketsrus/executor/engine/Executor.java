@@ -1,4 +1,4 @@
-package com.seatadvisor.executor.engine;
+package com.ticketsrus.executor.engine;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.seatadvisor.executor.api.Task;
-import com.seatadvisor.executor.api.TaskResult;
+import com.ticketsrus.executor.api.Task;
+import com.ticketsrus.executor.api.TaskResult;
 
 /**
  * The handler of executing a series of <code>Task</code> objects. This also provides <code>TaskResult</code> objects once a

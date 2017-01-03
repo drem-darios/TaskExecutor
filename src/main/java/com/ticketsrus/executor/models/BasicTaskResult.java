@@ -1,6 +1,6 @@
-package com.seatadvisor.executor.models;
+package com.ticketsrus.executor.models;
 
-import com.seatadvisor.executor.api.TaskResult;
+import com.ticketsrus.executor.api.TaskResult;
 
 /**
  * This <class>BasicTaskResult</class> is used to store String values as a result.
